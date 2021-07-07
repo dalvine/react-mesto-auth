@@ -1,19 +1,18 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import api from '../utils/api'
 import Header from './Header'
 import Main from './Main'
 import Registration from './Registration'
 import LogIn from './LogIn'
-import Footer from './Footer'
 import ImagePopup from './ImagePopup'
 import CurrentUserContext from '../contexts/CurrentUserContext'
 import EditProfilePopup from './EditProfilePopup'
 import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup'
-import Loader from './Loader'
 import CofirmRemovePlacePopup from './CofirmRemovePlacePopup'
 import PopupWithStatusRegistration from './PopupWithStatusRegistration'
+import ProtectedRoute from './ProtectedRoute'
 
 
 function App() {
@@ -25,7 +24,7 @@ function App() {
   const [selectedCard, setSelectedCard] = React.useState({})
   const [currentUser, setСurrentUser] = React.useState({})
   const [cards, setCards] = React.useState([])
-  const [isLoading, setIsLoading] = React.useState(true)
+  const [isLoading, setIsLoading] = React.useState(false)
   const [isLoadingForm, setIsLoadingForm] = React.useState(false)
   const [loggedIn, setloggedIn] = React.useState(false)
   const formAddPlaceRef = React.useRef()
@@ -133,29 +132,23 @@ function App() {
     <>
       <CurrentUserContext.Provider value={currentUser}>
         <Header />
-        
+
         <Switch>
-          <Route exact path="/">
-            { loggedIn ? (
-              <Redirect to='/' />
-            ) : (
-              <Redirect to='/sign-in' />
-            )
-            }
-          <Loader isLoading={isLoading} />
-            <Main
-              onEditProfile={handleEditProfileClick}
-              onAddPlace={handleAddPlaceClick}
-              onEditAvatar={handleEditAvatarClick}
-              closeAllPopups={closeAllPopups}
-              handleCardClick={setSelectedCard}
-              cards={cards}
-              onCardLike={handleCardLike}
-              onCardDelete={handleDeleteCardClick}
-              isLoading={isLoading}
-            />
-            <Footer />
-          </Route>
+          <ProtectedRoute
+            loggedIn={loggedIn}
+            path="/"
+            component={Main}
+            nEditProfile={handleEditProfileClick}
+            onAddPlace={handleAddPlaceClick}
+            onEditAvatar={handleEditAvatarClick}
+            closeAllPopups={closeAllPopups}
+            handleCardClick={setSelectedCard}
+            cards={cards}
+            onCardLike={handleCardLike}
+            onCardDelete={handleDeleteCardClick}
+            isLoading={isLoading}
+            exact
+          />
           <Route path="/sign-in">
             <LogIn />
           </Route>

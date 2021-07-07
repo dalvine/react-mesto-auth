@@ -1,15 +1,18 @@
 import React from 'react'
 import Card from './Card'
 import CurrentUserContext from '../contexts/CurrentUserContext';
+import Loader from './Loader'
+import Footer from './Footer'
 
 
 function Main({ onEditAvatar, onEditProfile, onAddPlace,
-    handleCardClick, cards, onCardLike, onCardDelete, isLoading}) {
+    handleCardClick, cards, onCardLike, onCardDelete, isLoading }) {
 
     const currentUser = React.useContext(CurrentUserContext);
 
     return (
         <>
+            <Loader isLoading={isLoading} />
             <main className={`main ${isLoading ? "main_hidden" : null}`}>
                 <section className="profile">
                     <div className="author">
@@ -38,6 +41,7 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace,
                     </ul>
                 </section>
             </main>
+            <Footer />
         </>
     )
 }

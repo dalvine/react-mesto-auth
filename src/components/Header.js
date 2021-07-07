@@ -12,7 +12,7 @@ function Header() {
             <Switch>
                 <Route exact path="/">
                 <p className="user-panel__email">{/* e-mail пользователя */}</p>
-                <Link className="user-panel__link">Выйти</Link>
+                <Link to='/'  className="user-panel__link">Выйти</Link>
                 </Route>
                 <Route path="/sign-in">
                     <Link to="/sign-up"  className="user-panel__link">Регистрация</Link>
