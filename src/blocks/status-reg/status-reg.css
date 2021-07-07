@@ -1,0 +1,8 @@
+.status-reg {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 36px 60px;
+    box-sizing: border-box;
+}

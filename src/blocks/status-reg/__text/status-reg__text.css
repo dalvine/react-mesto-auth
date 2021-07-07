@@ -1,0 +1,10 @@
+.status-reg__text {
+    margin: 0;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.21;
+    text-align: center;
+    color: #000000;
+    margin-top: 32px;
+}

@@ -13,12 +13,14 @@ import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup'
 import Loader from './Loader'
 import CofirmRemovePlacePopup from './CofirmRemovePlacePopup'
+import PopupWithStatusRegistration from './PopupWithStatusRegistration'
 
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
+  const [isStatusRegPopup, setIsStatusRegPopup] = React.useState(false)
   const [selectedDeleteCard, setSelectedDeleteCard] = React.useState({})
   const [selectedCard, setSelectedCard] = React.useState({})
   const [currentUser, setСurrentUser] = React.useState({})
@@ -48,6 +50,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
+    setIsStatusRegPopup(false);
     setSelectedCard({});
     setSelectedDeleteCard({});
     setIsLoadingForm(false)
@@ -169,6 +172,8 @@ function App() {
         <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddCard={handleAddPlace} isLoadingForm={isLoadingForm} formRef={formAddPlaceRef} />
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+
+        <PopupWithStatusRegistration onClose={closeAllPopups} isOpen={isStatusRegPopup} statusReg={false} />
 
       </CurrentUserContext.Provider>
     </>
