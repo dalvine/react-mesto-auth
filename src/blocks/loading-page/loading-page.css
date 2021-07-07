@@ -1,0 +1,12 @@
+.loading-page {
+  display: none;
+  position: fixed;
+  background-image: url('../../images/Isloading.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 70px;
+  height: 70px;
+  top: 200px;
+  left: calc(50% - 35px);
+}

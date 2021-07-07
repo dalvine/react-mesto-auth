@@ -1,0 +1,13 @@
+.places {
+  margin: 0 auto;
+  padding-top: 51px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .places {
+    padding-top: 36px;
+  }
+}

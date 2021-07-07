@@ -1,0 +1,11 @@
+.author__avatar {
+  grid-area: avatar;
+  justify-self: center;
+  position: relative;
+}
+
+@media screen and (max-width: 448px) {
+  .author__avatar {
+    margin-bottom: 26px;
+  }
+}

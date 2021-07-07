@@ -1,0 +1,6 @@
+.form__button_disabled {
+  background-color: inherit;
+  color: rgba(0,0,0,.1);
+  border: 1px solid rgba(0,0,0,.1);
+  cursor: default;
+}

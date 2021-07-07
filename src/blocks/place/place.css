@@ -1,0 +1,24 @@
+.place {
+  position: relative;
+  margin: 0;
+  border-radius: 10px;
+  background-color: white;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+@media screen and (max-width: 920px) {
+  .place {
+    max-width: 282px;
+  }
+}

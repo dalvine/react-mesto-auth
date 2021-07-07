@@ -1,0 +1,30 @@
+.author__button-edit {
+  width: 24px;
+  height: 24px;
+  grid-area: button-edit;
+  align-self: flex-end;
+  background-image: url(../../../images/pencil.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: 1px solid white;
+  outline: none;
+  cursor: pointer;
+}
+
+.author__button-edit:hover {
+  opacity: 0.6;
+  -webkit-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+}
+
+@media screen and (max-width: 448px) {
+  .author__button-edit {
+    margin-left: 10px;
+    width: 18px;
+    height: 18px;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+}

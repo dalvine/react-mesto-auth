@@ -1,0 +1,29 @@
+.author {
+  margin: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 120px 30px minmax(150px, 294px) 30px -webkit-max-content;
+  -ms-grid-columns: 120px 30px minmax(150px, 294px) 30px max-content;
+  grid-template-columns: 120px minmax(150px, 294px) -webkit-max-content;
+  grid-template-columns: 120px minmax(150px, 294px) max-content;
+  gap: 12px 30px;
+  -ms-grid-rows: auto 12px auto;
+      grid-template-areas:
+  'avatar author-name button-edit'
+  'avatar author-job ..';
+}
+
+@media screen and (max-width: 448px) {
+  .author {
+    -ms-grid-columns: 22px 0 190px 0 -webkit-min-content;
+    -ms-grid-columns: 22px 0 190px 0 min-content;
+    grid-template-columns: 22px 190px -webkit-min-content;
+    grid-template-columns: 22px 190px min-content;
+    -ms-grid-rows: auto 0 auto 0 auto;
+        grid-template-areas:
+  'avatar avatar avatar'
+  '.. author-name button-edit'
+  '.. author-job ..';
+  gap: 0;
+  }
+}

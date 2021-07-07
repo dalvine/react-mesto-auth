@@ -1,0 +1,4 @@
+.loading-page_visible {
+    display: block;
+    animation: rotate .8s linear infinite reverse;
+}

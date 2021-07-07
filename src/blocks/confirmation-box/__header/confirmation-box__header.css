@@ -1,0 +1,12 @@
+.confirmation-box__header {
+  margin: 0;
+  padding-bottom: 24px;
+  font-size: 24px;
+  line-height: 1.21;
+}
+
+@media screen and (max-width: 440px) {
+  .confirmation-box__header {
+    font-size: 18px;
+  }
+}
