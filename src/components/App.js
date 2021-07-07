@@ -26,7 +26,7 @@ function App() {
   const [cards, setCards] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(false)
   const [isLoadingForm, setIsLoadingForm] = React.useState(false)
-  const [loggedIn, setloggedIn] = React.useState(false)
+  const [loggedIn, setloggedIn] = React.useState(true)
   const formAddPlaceRef = React.useRef()
   const formEditAvatarRef = React.useRef()
   const formEditProfileRef = React.useRef()

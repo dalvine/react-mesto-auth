@@ -4,3 +4,10 @@
     justify-self: end;
     margin-top: 216px;
 }
+
+
+@media screen and (max-width: 920px) {
+    .form__button_place_auth {
+        margin-top: 173px;
+    }
+  }

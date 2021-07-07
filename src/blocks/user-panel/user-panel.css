@@ -4,3 +4,9 @@
     align-items: center;
     margin: 0;
 }
+
+@media screen and (max-width: 430px) {
+    .user-panel {
+        display: none;
+    }
+}

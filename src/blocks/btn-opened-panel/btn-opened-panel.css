@@ -1,0 +1,21 @@
+.btn-opened-panel {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    background-image: url(../../images/open-profile-info.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+@media screen and (max-width: 430px) {
+    .btn-opened-panel {
+        display: block;
+        margin-right: 27px;
+        margin-top: 27px;
+    }
+}

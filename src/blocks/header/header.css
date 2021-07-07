@@ -1,7 +1,10 @@
 .header {
   margin: 0 auto;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   max-width: calc(100% - 400px);
   padding-bottom: 40px;
   padding-top: 45px;
@@ -23,7 +26,8 @@
 
 @media screen and (max-width: 430px) {
   .header {
-    padding-top: 28px;
+    flex-direction: row;
+    padding-top: 0;
     max-width: 100%;
     padding-bottom: 30px;
   }

@@ -1,0 +1,21 @@
+.user-panel__logout {
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 1.22;
+    color: #A9A9A9;
+    margin: 0;
+    margin-left: 24px;
+}
+
+.user-panel__logout:hover {
+    opacity: 0.8;
+}
+
+
+@media screen and (max-width: 430px) {
+    .user-panel__logout {
+        margin-top: 18px;
+        margin-left: 0;
+    }
+}
