@@ -70,7 +70,7 @@ class Api {
         "method": "PUT",
         "headers": this._headers,
       })
-      .then(this._checkResponse)
+        .then(this._checkResponse)
     } else {
       return fetch(`${this._url}/cards/likes/${id}`, {
         "method": "DELETE",
@@ -78,7 +78,7 @@ class Api {
       })
         .then(this._checkResponse)
     }
-  } 
+  }
 
   _checkResponse(res) {
     if (res.ok) return res.json()

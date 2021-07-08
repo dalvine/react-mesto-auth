@@ -11,9 +11,17 @@
     opacity: 0.8;
   }
 
-  @media screen and (max-width: 920px) {
-    .user-panel__auth-link {
-        font-size: 14px;
-        line-height: 1.21;
-    }
+@media screen and (max-width: 920px) {
+  .user-panel__auth-link {
+      font-size: 14px;
+      line-height: 1.21;
   }
+}
+
+@media screen and (max-width: 430px) {
+  .user-panel__auth-link {
+      font-size: 14px;
+      line-height: 1.21;
+      margin-right: 27px;
+  }
+}

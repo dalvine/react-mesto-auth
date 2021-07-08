@@ -26,7 +26,7 @@ function App() {
   const [cards, setCards] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(false)
   const [isLoadingForm, setIsLoadingForm] = React.useState(false)
-  const [loggedIn, setloggedIn] = React.useState(true)
+  const [loggedIn, setloggedIn] = React.useState(false)
   const formAddPlaceRef = React.useRef()
   const formEditAvatarRef = React.useRef()
   const formEditProfileRef = React.useRef()
@@ -131,7 +131,7 @@ function App() {
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
-        <Header />
+        <Header loggedIn={loggedIn} setLoggedIn={setloggedIn}/>
 
         <Switch>
           <ProtectedRoute
@@ -150,7 +150,7 @@ function App() {
             exact
           />
           <Route path="/sign-in">
-            <LogIn />
+            <LogIn setLoggedIn={setloggedIn}/>
           </Route>
           <Route path="/sign-up">
             <Registration />
