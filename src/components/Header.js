@@ -11,7 +11,8 @@ function Header(props) {
     }
 
     const logOut = () => {
-        props.setloggedIn(false)
+        localStorage.removeItem('token')
+        props.setLoggedIn(false)
         history.push('/')
     }
 
@@ -20,8 +21,8 @@ function Header(props) {
             <div className={`user-panel ${openPanel ? "user-panel_opened" : ""} ${props.loggedIn ? "" : "user-panel_show"}`}>
                 <Switch>
                     <Route exact path="/">
-                        <p className="user-panel__email">email@mail.com</p>
-                        <p onclick={logOut} to='/' className="user-panel__logout">Выйти</p>
+                        <p className="user-panel__email">{props.userEmail}</p>
+                        <p onClick={logOut} className="user-panel__logout">Выйти</p>
                     </Route>
                     <Route path="/sign-in">
                         <Link to="/sign-up" className="user-panel__auth-link">Регистрация</Link>

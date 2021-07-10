@@ -16,16 +16,17 @@ function LogIn(props) {
         e.preventDefault()
         auth.authorization(userData)
             .then(data => {
-                console.log(data)
+                localStorage.setItem('token', data.token) 
                 props.setLoggedIn(true)
             })
-            .catch(err => {
+            .catch(() => {
                 alert('Ошибка. Попробуйте еще раз')
+                setUserData({})
             })
             .finally(() => {
                 e.target.reset()
-                setUserData({})
                 history.push('/')
+
             })
 
     }

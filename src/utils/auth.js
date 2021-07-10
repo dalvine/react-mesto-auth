@@ -39,10 +39,9 @@ class Auth {
                 "Authorization": `Bearer ${JWT}`
             }
         })
-            .then(res => res.json())
-            .then(data => data)
-            .catch(err => console.log(err))
+            .then(this._checkResponse)
     }
+
 
     _checkResponse(res) {
         if (res.ok) return res.json()

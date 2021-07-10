@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import api from '../utils/api'
 import Header from './Header'
 import Main from './Main'
@@ -11,15 +11,14 @@ import EditProfilePopup from './EditProfilePopup'
 import EditAvatarPopup from './EditAvatarPopup'
 import AddPlacePopup from './AddPlacePopup'
 import CofirmRemovePlacePopup from './CofirmRemovePlacePopup'
-import PopupWithStatusRegistration from './PopupWithStatusRegistration'
 import ProtectedRoute from './ProtectedRoute'
+import auth from '../utils/auth'
 
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false)
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false)
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false)
-  const [isStatusRegPopup, setIsStatusRegPopup] = React.useState(false)
   const [selectedDeleteCard, setSelectedDeleteCard] = React.useState({})
   const [selectedCard, setSelectedCard] = React.useState({})
   const [currentUser, setСurrentUser] = React.useState({})
@@ -27,6 +26,7 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false)
   const [isLoadingForm, setIsLoadingForm] = React.useState(false)
   const [loggedIn, setloggedIn] = React.useState(false)
+  const [userEmail, setUserEmail] = React.useState('')
   const formAddPlaceRef = React.useRef()
   const formEditAvatarRef = React.useRef()
   const formEditProfileRef = React.useRef()
@@ -49,7 +49,6 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
-    setIsStatusRegPopup(false);
     setSelectedCard({});
     setSelectedDeleteCard({});
     setIsLoadingForm(false)
@@ -112,6 +111,21 @@ function App() {
       .catch(err => console.log(err))
   }
 
+  function checkAuthorization() {
+    if (localStorage.getItem('token')) {
+      auth.getToken(localStorage.getItem('token'))
+        .then(data => {
+          setUserEmail(data.data.email)
+          setloggedIn(true)
+        })
+        .catch(() => {
+          setloggedIn(false)
+        })
+    } else {
+      setloggedIn(false)
+    }
+  }
+
   React.useEffect(() => {
     api.getUserInfo()
       .then(value => {
@@ -128,17 +142,21 @@ function App() {
       })
   }, [])
 
+  React.useEffect(() => {
+    checkAuthorization()
+  }, [loggedIn])
+
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
-        <Header loggedIn={loggedIn} setLoggedIn={setloggedIn}/>
+        <Header loggedIn={loggedIn} setLoggedIn={setloggedIn} userEmail={userEmail} />
 
         <Switch>
           <ProtectedRoute
             loggedIn={loggedIn}
             path="/"
             component={Main}
-            nEditProfile={handleEditProfileClick}
+            onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
             onEditAvatar={handleEditAvatarClick}
             closeAllPopups={closeAllPopups}
@@ -150,10 +168,10 @@ function App() {
             exact
           />
           <Route path="/sign-in">
-            <LogIn setLoggedIn={setloggedIn}/>
+            {loggedIn ? <Redirect to='/' /> : <LogIn setLoggedIn={setloggedIn} />}
           </Route>
           <Route path="/sign-up">
-            <Registration />
+            {loggedIn ? <Redirect to='/' /> : <Registration />}
           </Route>
         </Switch>
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} isLoadingForm={isLoadingForm} formRef={formEditProfileRef} />
@@ -165,8 +183,6 @@ function App() {
         <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddCard={handleAddPlace} isLoadingForm={isLoadingForm} formRef={formAddPlaceRef} />
 
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-
-        <PopupWithStatusRegistration onClose={closeAllPopups} isOpen={isStatusRegPopup} statusReg={false} />
 
       </CurrentUserContext.Provider>
     </>
