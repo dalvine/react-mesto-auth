@@ -1,5 +1,6 @@
 {
   "name": "mesto-react",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,8 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d public"
+    "predeploy": "npm run build && scp -r ./build/* admin@84.201.162.16:~/mesto-frontend",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
