@@ -119,6 +119,7 @@ function App() {
           setloggedIn(true)
         })
         .catch(() => {
+          localStorage.removeItem('token')
           setloggedIn(false)
         })
     } else {
