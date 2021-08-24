@@ -1,6 +1,6 @@
 class Auth {
     constructor() {
-        this._baseUrl = 'https://auth.nomoreparties.co'
+        this._baseUrl = 'https://api.mesto71.nomoredomains.club'
     }
 
     register({ password, email }) {
